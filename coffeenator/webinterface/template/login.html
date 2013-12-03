@@ -1,0 +1,93 @@
+{% load i18n %}<!DOCTYPE HTML>
+<!--
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    
+    Aaron Meier <aaron@bluespeed.org>
+-->
+<html>
+<head>
+	<title>{% trans "LOGIN" %} - Coffeenator</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="{% trans "Order your Coffees today. Fast, simple and easily over network." %}" />
+    <meta name="author" content="Aaron Meier" />
+	<link rel="stylesheet" href="/static/css/style.css" />   
+	<link rel="stylesheet" href="/static/css/jquery-ui.css" />
+	<link rel="shortcut icon" href="/static/img/favicon.ico" />
+	<script type="text/javascript" src="/static/js/jquery.js"></script> 
+	<script type="text/javascript" src="/static/js/jquery-ui.js"></script>
+	{% if page.settings.force_ssl %}
+	<script type="text/javascript">
+		if (window.location.protocol != "https:")
+	    window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+	</script>
+	{% endif %}
+	<script type="text/javascript">
+	$(document).ready(function(){
+	   	$("#loginuser").click(function() {
+	  		$.ajax({
+		        url: "/login/ajax/",
+		        type: "POST",
+		        data: "login=1&" + $("#loginuser-form").serialize(),
+		        success: function(msg){
+		            if(parseInt(msg)!=0){
+		                function sleep(milliSeconds){
+		                	document.devCheater.sleep(milliSeconds);
+		                }
+		            }
+		            $("#login-text").html(msg);
+		        }
+	 		});
+	       	return false;
+    	});
+   	});
+	</script>
+</head>
+<body>
+	<aside id="sidebar">
+		<img src="/static/img/logo-big.png"/>
+		<footer>
+			Copyright &copy; 2013 Aaron Meier, Dario Metzger <br />
+			Licensed under <a href="http://www.gnu.org/">GNU GPL</a>
+		</footer>
+	</aside>
+	<div id="login">
+		<div class="login-box">
+			<form id="loginuser-form">
+				<fieldset>
+					<label>
+						{% trans "Username" %}
+						{{ LoginForm.username }}
+					</label>
+					<label>
+						{% trans "Password" %}
+						{{ LoginForm.password }}
+					</label>
+					<label>
+						{% trans "Keep me logged in" %}
+						{{ LoginForm.remember }}
+					</label>
+				</fieldset>
+				<input type="reset" value="{% trans "Reset" %}" />
+				<input id="loginuser" type="submit" value="{% trans "Login" %}" />
+			</form>
+		</div>
+		<div id="login-text" class="ui-widget">
+			<div class="ui-state-highlight ui-corner-all">
+				<p><span class="ui-icon ui-icon-info"></span>
+				<strong>{% trans "Info: " %}</strong>{% trans "Please login with your username and password" %}</p>				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

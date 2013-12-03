@@ -1,0 +1,29 @@
+{% load i18n %}
+<script>
+$(document).ready(function(){
+    $(".response-text").click(function(){
+ 		$(this).hide("slide", 500);
+    });
+});
+</script>
+{% if messages.errors %}
+<div class="ui-widget">
+	<div class="response-text ui-state-error ui-corner-all">
+		<p>
+			<span class="ui-icon ui-icon-alert"></span>
+	        <strong>{% trans "Please correct the following errors." %}</strong>
+	        {{ messages.errors }}
+	    </p>
+	</div>
+</div>
+{% elif messages.info %}
+<div class="ui-widget">
+	<div class="response-text ui-state-highlight ui-corner-all">
+		<p>
+			<span class="ui-icon ui-icon-info"></span>
+	        <strong>{% trans "Everything fine." %}</strong>
+	        {{ messages.info }}
+	    </p>
+	</div>
+</div>
+{% endif %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block scripts %}
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+	var data = google.visualization.arrayToDataTable([
+		{{ ConsumChartList|safe }}
+	]);
+	var options = {
+	  title: '{% trans "Coffee consum" %}'
+	};
+	var chart = new google.visualization.LineChart(document.getElementById('consum-chart'));
+	chart.draw(data, options);
+}
+{% endblock %}
+{% block content %}
+<article class="module width_half">
+    <header>
+        <h3>{% trans "Welcome to coffeenator" %}</h3>
+    </header>
+    <div class="module_content">
+		<p>{{ page.settings.welcome_message }}</p>
+    </div>
+    <footer>
+    	<strong>{% trans "System up and running since " %}</strong>{{ uptime }}
+    </footer>
+</article>
+<article class="module width_half">
+    <header>
+        <h3>{% trans "Top Users in the last 5 days" %}</h3>
+    </header>
+    <div class="module_content">
+		<table >
+			<thead>
+				<tr>
+					<td>{% trans "User" %}</td>
+					<td>{% trans "Number of coffees" %}</td>
+				</tr>
+			</thead>
+			<tbody>
+				{{ TopUsersList|safe }}
+			</tbody>
+		</table>
+    </div>
+</article>
+<article class="module width_full">
+    <header>
+        <h3>{% trans "Monthly coffee consum" %}</h3>
+    </header>
+    <div class="module_content">
+		<div id="consum-chart"></div>
+    </div>
+</article>
+{% endblock %}

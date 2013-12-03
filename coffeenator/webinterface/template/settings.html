@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% load i18n %}
+{%block scripts %}
+$(document).ready(function(){
+	$("#settings-tabs").tabs();
+	$("#createuser-dialog").dialog({
+		autoOpen: false,
+		height: 500,
+		width: 600,
+		modal: true,
+		close: function(event, ui){
+        	location.reload(true);
+      	}
+	});
+	$(".deleteuser").click(function(){
+		$.ajax({
+		    url: "/settings/ajax/",
+		    type: "POST",
+		    data: "deleteuser=" + $(this).val(),
+		    success: function(msg){
+		        if(parseInt(msg)!=0){
+		            function sleep(milliSeconds){
+		                document.devCheater.sleep(milliSeconds);
+		            }
+		        }
+		    }
+		});
+		return false;
+	});
+ 	$("#createuser").click(function() {
+		$( "#createuser-dialog" ).dialog( "open" );
+	});
+	$("#saveuser").click(function() {
+   		$.ajax({
+	        url: "/settings/ajax/",
+	        type: "POST",
+	        data: "createuser=1&" + $("#createuser-form").serialize(),
+	        success: function(msg){
+	            if(parseInt(msg)!=0){
+	                function sleep(milliSeconds){
+	                	document.devCheater.sleep(milliSeconds);
+	                }
+	            }
+	            $("#createuser-text").html(msg);
+	        }
+    	});
+        return false;
+    });
+   	$("#savesettings").click(function() {
+  		$.ajax({
+	        url: "/settings/ajax/",
+	        type: "POST",
+	        data: "changesettings=1&" + $("#changesettings-form").serialize(),
+	        success: function(msg){
+	            if(parseInt(msg)!=0){
+	                function sleep(milliSeconds){
+	                	document.devCheater.sleep(milliSeconds);
+	                }
+	            }
+	            $("#changesettings-text").html(msg);
+	        }
+   		});
+       return false;
+    });
+}); 
+{% endblock %}
+{% block content %}
+<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="settings-tabs">
+	<ul role="tablist" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+		<li aria-selected="true" aria-labelledby="ui-id-2" aria-controls="tabs-1" tabindex="0" role="tab" class="ui-state-default ui-corner-top ui-tabs-active ui-state-active">
+			<a id="ui-id-1" tabindex="-1" role="presentation" class="ui-tabs-anchor" href="#users">{% trans "Users" %}</a>
+		</li>
+		<li aria-selected="false" aria-labelledby="ui-id-3" aria-controls="tabs-2" tabindex="-1" role="tab" class="ui-state-default ui-corner-top">
+			<a id="ui-id-2" tabindex="-1" role="presentation" class="ui-tabs-anchor" href="#coffeenator">{% trans "Coffeenator" %}</a>
+		</li>
+	</ul>
+	<div aria-hidden="true" aria-expanded="true" role="tabpanel" class="ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" id="users">
+		<div id="tab-content">
+			<table >
+				<thead>
+					<tr>
+						<td></td>
+						<td>{% trans "User" %}</td>
+						<td>{% trans "Firstname" %}</td>
+						<td>{% trans "Lastname" %}</td>
+						<td>{% trans "Group" %}</td>
+					</tr>
+				</thead>
+				<tbody>
+				{{ UserListForm|safe }}
+				</tbody>
+			</table>
+			<div id="createuser-dialog" title="{% trans "Create new user" %}">
+				<div id="createuser-text" class="ui-widget">
+					<div class="ui-state-highlight ui-corner-all">
+						<p><span class="ui-icon ui-icon-info"></span>
+						<strong>{% trans "Info: " %}</strong>{% trans "Please enter needed information" %}</p>				
+					</div>
+				</div>
+				<form id="createuser-form">
+					<fieldset>
+						<legend>{%trans "Account information" %}</legend>
+						<label>
+							{% trans "Username" %}
+							{{ UserCreationForm.username }}
+						</label>
+						<label>
+							{% trans "Password" %}
+							{{ UserCreationForm.password }}
+						</label>
+						<label>
+							{% trans "Firstname" %}
+							{{ UserCreationForm.first_name }}
+						</label>
+						<label>
+							{% trans "Lastname" %}
+							{{ UserCreationForm.last_name }}
+						</label>
+						<label>
+							{% trans "Email" %}
+							{{ UserCreationForm.email }}
+						</label>
+					</fieldset>
+					<fieldset>
+						<legend>{% trans "Advanced settings" %}</legend>
+						<label>
+							{% trans "Language" %}
+							{{ ProfileCreationForm.language }}
+						</label>
+						<label>
+							{% trans "Administrator" %}
+							{{ ProfileCreationForm.is_admin }}
+						</label>
+					</fieldset>
+					<input id="saveuser" type="submit" value="{% trans "Save" %}" />
+				</form>
+			</div>
+			<button id="createuser">{% trans "Create user" %}</button>	
+		</div>
+	</div>
+	<div aria-hidden="false" aria-expanded="false" style="display: none;" role="tabpanel" class="ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" id="coffeenator">
+		<div id="tab-content">
+			<form id="changesettings-form">
+				<fieldset>
+					<div class="left">
+						<h2>{% trans "Webinterface" %}</h2>
+						<label>
+							{% trans "Force SSL connections" %}
+							{{ SettingsChangeForm.force_ssl }}
+						</label>
+						<label>
+							{% trans "Set up a welcome message" %}
+							{{ SettingsChangeForm.welcome_message }}
+						</label>
+					</div>
+					<div class="middle">
+						<h2>{% trans "Coffeemachine" %}</h2>
+						{{ SettingsChangeForm.descale }}{% trans "Descale the machine" %}
+					</div>
+					<div class="right">
+						<h2>{% trans "Telnetinterface" %}</h2>
+						{{ SettingsChangeForm.telnet }}{% trans "Activate interface at the coffee port 60553" %}
+					</div>
+				</fieldset>
+				<input id="savesettings" type="submit" value="{% trans "Save" %}" />
+			</form>
+		</div>
+		<div id="changesettings-text" class="ui-widget"></div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load i18n %}
+{%block scripts %}
+$(document).ready(function(){
+	$("#order-tabs").tabs();
+	$("#id_datetime").datetimepicker({
+		dateFormat: 'yy-mm-dd',
+		timeFormat: 'hh:mm'
+	});
+	$("#ordercoffee").click(function(){
+		$.ajax({
+		    url: "/orders/ajax/",
+		    type: "POST",
+		    data: "ordercoffee=1&" + $("#ordercoffee-form").serialize(),
+		    success: function(msg){
+		        if(parseInt(msg)!=0){
+		            function sleep(milliSeconds){
+		            	document.devCheater.sleep(milliSeconds);
+		            }
+		        }
+		        $("#ordercoffee-text").html(msg);
+		    }
+		});
+		return false;
+	});
+ 	$("#acceptstoporders").click(function() {
+		$("#stoporders-dialog").dialog( "open" );
+	});
+	$("#stoporders").click(function(){
+		$.ajax({
+		    url: "/orders/ajax/",
+		    type: "POST",
+		    data: "stoporders=1",
+		    success: function(msg){
+		        if(parseInt(msg)!=0){
+		            function sleep(milliSeconds){
+		                document.devCheater.sleep(milliSeconds);
+		            }
+		        }
+		        $("#stoporders-text").html(msg);
+		    }
+		});
+		return false;
+	});
+}); 
+{% endblock %}
+{% block content %}
+<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="order-tabs">
+	<ul role="tablist" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+		<li aria-selected="true" aria-labelledby="ui-id-2" aria-controls="tabs-1" tabindex="0" role="tab" class="ui-state-default ui-corner-top ui-tabs-active ui-state-active">
+			<a id="ui-id-1" tabindex="-1" role="presentation" class="ui-tabs-anchor" href="#new-coffee">New Coffee</a>
+		</li>
+		<li aria-selected="false" aria-labelledby="ui-id-3" aria-controls="tabs-2" tabindex="-1" role="tab" class="ui-state-default ui-corner-top">
+			<a id="ui-id-2" tabindex="-1" role="presentation" class="ui-tabs-anchor" href="#queue">Coffee Queue</a>
+		</li>
+	</ul>
+	<div aria-hidden="false" aria-expanded="true" role="tabpanel" class="ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" id="new-coffee">
+		<div id="tab-content">
+			<form id="ordercoffee-form">
+				<fieldset>	
+					<div class="left">
+						<strong><i>{% trans "Please select a coffee typ" %}</i></strong>
+						<label>
+							{{ CoffeeOrderForm.typ }}
+						</label>
+					</div>
+					<div class="middle">
+						<strong><i>{% trans ".. and the numbers of cups." %}</i></strong>
+						<label>
+							{{ CoffeeOrderForm.cups }}
+						</label>
+					</div>
+					<div class="right">
+						<strong><i>{% trans "If You d'like you can define the exact time here." %}</i></strong>
+						<label>
+							{{ CoffeeOrderForm.datetime }}
+						</label>
+						<label>
+							{% trans "I want to take the coffee now." %}
+							{{ CoffeeOrderForm.now }}
+						</label>
+					</div>
+				</fieldset>
+				<input id="ordercoffee" type="submit" value="{% trans "Order a new coffee" %}" />
+			</form>
+		</div>
+		<div id="ordercoffee-text" class="ui-widget"></div>
+	</div>
+	<div aria-hidden="true" aria-expanded="false" style="display: none;" role="tabpanel" class="ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" id="queue">
+		<div id="tab-content">
+			<table >
+				<thead>
+					<tr>
+						<td>{% trans "Date & time" %}</td>
+						<td>{% trans "User" %}</td>
+						<td>{% trans "Typ" %}</td>
+						<td>{% trans "Numbers" %}</td>
+					</tr>
+				</thead>
+				<tbody>
+					{{ CoffeeListForm|safe }}
+				</tbody>
+			</table>
+			<button id="acceptstoporders">{% trans "Stop all orders" %}</button>
+			<div id="stoporders-dialog" class="accept-dialog" title="{% trans "Stop all orders" %}">
+				<h3>{% trans "Are you sure?" %}</h3>
+				<input id="stoporders" type="submit" value="{% trans "Yes, I am" %}" />
+				<div id="stoporders-text" class="ui-widget"></div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
