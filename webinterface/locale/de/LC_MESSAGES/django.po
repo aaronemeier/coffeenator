@@ -1,0 +1,381 @@
+#   German language for coffeenator
+#   Aaron Meier <aaron@bluespeed.org>, 2014
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-01 12:00+0100\n"
+"PO-Revision-Date: 2014-11-01 12:00+0100\n"
+"Last-Translator: Aaron Meier <aaron@bluespeed.org>\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: webinterface/default_settings.py:88 webinterface/lib/models.py:27
+msgid "German"
+msgstr "Deutsch"
+
+#: webinterface/default_settings.py:89 webinterface/lib/models.py:27
+msgid "English"
+msgstr "Englisch"
+
+#: webinterface/lib/common.py:26
+msgid "DASHBOARD"
+msgstr ""
+
+#: webinterface/lib/common.py:27
+msgid "SETTINGS"
+msgstr "EINSTELLUNGEN"
+
+#: webinterface/lib/common.py:28
+msgid "ORDERS"
+msgstr "BESTELLUNGEN"
+
+#: webinterface/lib/models.py:37
+msgid "Small Coffee"
+msgstr "Kleiner Kaffee"
+
+#: webinterface/lib/models.py:38
+msgid "Medium Coffee"
+msgstr "Mittlerer Kaffee"
+
+#: webinterface/lib/models.py:39
+msgid "Long Coffee"
+msgstr "Grosser Kaffee"
+
+#: webinterface/lib/models.py:40
+msgid "One cup"
+msgstr "Eine Tasse"
+
+#: webinterface/lib/models.py:41
+msgid "Two cups"
+msgstr "Zwei Tassen"
+
+#: webinterface/template/ajax.html:14
+msgid "Please correct the following errors."
+msgstr "Bitte behebe die folgenden Fehler."
+
+#: webinterface/template/ajax.html:24
+msgid "Everything fine."
+msgstr "Alles in Ordnung."
+
+#: webinterface/template/base.html:22 webinterface/template/login.html:22
+msgid "Order your Coffees today. Fast, simple and easily over network."
+msgstr "Bestellt dein Kaffee heute. Schnell, einfach und bequem über das Netzwerk."
+
+#: webinterface/template/base.html:45
+msgid "Welcome "
+msgstr "Willkommen"
+
+#: webinterface/template/base.html:47
+msgid "Logout"
+msgstr "Abmelden"
+
+#: webinterface/template/base.html:48 webinterface/template/orders.html:106
+msgid "Are you sure?"
+msgstr "Bist du sicher?"
+
+#: webinterface/template/base.html:49 webinterface/template/orders.html:107
+msgid "Yes, I am"
+msgstr "Ja, bin ich"
+
+#: webinterface/template/base.html:59
+msgid "Copyright &copy; 2014. Coffeenator development team"
+msgstr "Copyright &copy; 2014, Das Coffeenator Entwicklerteam"
+
+#: webinterface/template/base.html:60
+msgid "Licensed under "
+msgstr "Lizenziert unter"
+
+#: webinterface/template/dashboard.html:11
+msgid "Coffee consum"
+msgstr "Kaffeekonsum"
+
+#: webinterface/template/dashboard.html:20
+msgid "Welcome to coffeenator"
+msgstr "Willkommen beim Coffeenator"
+
+#: webinterface/template/dashboard.html:26
+msgid "System up and running since "
+msgstr "System läuft optimal seit"
+
+#: webinterface/template/dashboard.html:31
+msgid "Top Users in the last 5 days"
+msgstr "Top Benutzer in den letzten 5 Tagen"
+
+#: webinterface/template/dashboard.html:37
+#: webinterface/template/orders.html:95 webinterface/template/settings.html:83
+#: webinterface/view/settings.py:31
+msgid "User"
+msgstr "Benutzer"
+
+#: webinterface/template/dashboard.html:38
+msgid "Number of coffees"
+msgstr "Anzahl Kaffees"
+
+#: webinterface/template/dashboard.html:49
+msgid "Monthly coffee consum"
+msgstr "Monatlicher Kaffeekonsum"
+
+#: webinterface/template/login.html:20
+msgid "LOGIN"
+msgstr "ANMELDUNG"
+
+#: webinterface/template/login.html:69 webinterface/template/settings.html:104
+msgid "Username"
+msgstr "Benutzername"
+
+#: webinterface/template/login.html:73 webinterface/template/settings.html:108
+msgid "Password"
+msgstr "Passwort"
+
+#: webinterface/template/login.html:77
+msgid "Keep me logged in"
+msgstr "Angemeldet bleiben"
+
+#: webinterface/template/login.html:81
+msgid "Reset"
+msgstr "Zur&uuml;cksetzen"
+
+#: webinterface/template/login.html:82
+msgid "Login"
+msgstr "Anmelden"
+
+#: webinterface/template/login.html:88 webinterface/template/settings.html:97
+msgid "Info: "
+msgstr ""
+
+#: webinterface/template/login.html:88
+msgid "Please login with your username and password"
+msgstr "Bitte mit dem Benutzer und Passwort anmelden"
+
+#: webinterface/template/orders.html:62
+msgid "Please select a coffee typ"
+msgstr "Bitte einen Kaffeetyp auswählen"
+
+#: webinterface/template/orders.html:68
+msgid ".. and the numbers of cups."
+msgstr ".. und die Anzahl Tassen."
+
+#: webinterface/template/orders.html:74
+msgid "If You d'like you can define the exact time here."
+msgstr "Wenn du möchtest, kannst du die genaue Uhrzeit definieren."
+
+#: webinterface/template/orders.html:79
+msgid "I want to take the coffee now."
+msgstr "Ich möchte meinen Kaffee jetzt."
+
+#: webinterface/template/orders.html:84
+msgid "Order a new coffee"
+msgstr "Bestelle einen neuen Kaffee"
+
+#: webinterface/template/orders.html:94
+msgid "Date & time"
+msgstr "Datum & Uhrzeit"
+
+#: webinterface/template/orders.html:96
+msgid "Typ"
+msgstr "Typ"
+
+#: webinterface/template/orders.html:97
+msgid "Numbers"
+msgstr "Anzahl"
+
+#: webinterface/template/orders.html:104 webinterface/template/orders.html:105
+msgid "Stop all orders"
+msgstr "Alle Bestellungen stoppen"
+
+#: webinterface/template/settings.html:71
+msgid "Users"
+msgstr "Benutzer"
+
+#: webinterface/template/settings.html:74
+msgid "Coffeenator"
+msgstr ""
+
+#: webinterface/template/settings.html:84
+#: webinterface/template/settings.html:112
+msgid "Firstname"
+msgstr "Vorname"
+
+#: webinterface/template/settings.html:85
+#: webinterface/template/settings.html:116
+msgid "Lastname"
+msgstr "Nachname"
+
+#: webinterface/template/settings.html:86
+msgid "Group"
+msgstr "Gruppe"
+
+#: webinterface/template/settings.html:93
+msgid "Create new user"
+msgstr "Neuer Benutzer erstellen"
+
+#: webinterface/template/settings.html:97
+msgid "Please enter needed information"
+msgstr "Bitte trage die n&ouml:tigen Informationen ein"
+
+#: webinterface/template/settings.html:102
+msgid "Account information"
+msgstr "Benutzer Information"
+
+#: webinterface/template/settings.html:120
+msgid "Email"
+msgstr ""
+
+#: webinterface/template/settings.html:125
+msgid "Advanced settings"
+msgstr "Erweiterte Einstellungen"
+
+#: webinterface/template/settings.html:127
+msgid "Language"
+msgstr "Sprache"
+
+#: webinterface/template/settings.html:131 webinterface/view/settings.py:29
+msgid "Administrator"
+msgstr ""
+
+#: webinterface/template/settings.html:135
+#: webinterface/template/settings.html:165
+msgid "Save"
+msgstr "Speichern"
+
+#: webinterface/template/settings.html:138
+msgid "Create user"
+msgstr "Benutzer erstellen"
+
+#: webinterface/template/settings.html:146
+msgid "Webinterface"
+msgstr "Weboberfl&auml;che"
+
+#: webinterface/template/settings.html:148
+msgid "Force SSL connections"
+msgstr "Geschützte Verbindungen erzwingen"
+
+#: webinterface/template/settings.html:152
+msgid "Set up a welcome message"
+msgstr "Eine Wilkommensnachricht eingeben"
+
+#: webinterface/template/settings.html:157
+msgid "Coffeemachine"
+msgstr "Kaffeemaschine"
+
+#: webinterface/template/settings.html:158
+msgid "Descale the machine"
+msgstr "Kaffeemaschine entkalken"
+
+#: webinterface/template/settings.html:161
+msgid "Telnetinterface"
+msgstr "Telnetoberfl&auml;che"
+
+#: webinterface/template/settings.html:162
+msgid "Activate interface at the coffee port 60553"
+msgstr "Oberfl&auml;che an Port 60553 aktivieren"
+
+#: webinterface/view/dashboard.py:44
+msgid "January"
+msgstr "Januar"
+
+#: webinterface/view/dashboard.py:45
+msgid "February"
+msgstr "Februar"
+
+#: webinterface/view/dashboard.py:46
+msgid "March"
+msgstr "M&auml;rz"
+
+#: webinterface/view/dashboard.py:47
+msgid "April"
+msgstr "April"
+
+#: webinterface/view/dashboard.py:48
+msgid "May"
+msgstr "Mai"
+
+#: webinterface/view/dashboard.py:49
+msgid "June"
+msgstr "Juni"
+
+#: webinterface/view/dashboard.py:50
+msgid "July"
+msgstr "Juli"
+
+#: webinterface/view/dashboard.py:51
+msgid "August"
+msgstr "August"
+
+#: webinterface/view/dashboard.py:52
+msgid "September"
+msgstr "September"
+
+#: webinterface/view/dashboard.py:53
+msgid "October"
+msgstr "Oktober"
+
+#: webinterface/view/dashboard.py:54
+msgid "November"
+msgstr "November"
+
+#: webinterface/view/dashboard.py:55
+msgid "December"
+msgstr "Dezember"
+
+#: webinterface/view/dashboard.py:72
+msgid "Month"
+msgstr "Monat"
+
+#: webinterface/view/dashboard.py:72
+msgid "Small coffees"
+msgstr "Kleine Kaffees"
+
+#: webinterface/view/dashboard.py:72
+msgid "Middle coffees"
+msgstr "Mittlere Kaffees"
+
+#: webinterface/view/dashboard.py:72
+msgid "Long coffees"
+msgstr "Grosse Kaffees"
+
+#: webinterface/view/login.py:31
+msgid "User is locked."
+msgstr "Benutzer ist gesperrt."
+
+#: webinterface/view/login.py:34
+msgid "Either username or password is wrong."
+msgstr "Der Benutzername oder das Passwort ist falsch."
+
+#: webinterface/view/orders.py:53
+msgid "Your coffee will be avaiable shortly."
+msgstr "Dein Kaffee wird gleich verf&uml;gbar sein."
+
+#: webinterface/view/orders.py:59
+msgid "Your coffee order was placed for "
+msgstr "Deine Kaffeebestellung ist geplant f&uuml;r"
+
+#: webinterface/view/orders.py:61
+msgid "Select either an exact time or now."
+msgstr "Bitte eine Zeit ausw&auml;hlen"
+
+#: webinterface/view/orders.py:67
+msgid "Coffee queue cleared!"
+msgstr "Kaffeeewarteschlange geleert!"
+
+#: webinterface/view/orders.py:69 webinterface/view/settings.py:92
+msgid "You don't have permission to do this!"
+msgstr "Du hast keine Berechtigungen um dies zu tun!"
+
+#: webinterface/view/orders.py:72 webinterface/view/settings.py:95
+msgid "wrong request"
+msgstr "Falsche Anforderung"
+
+#: webinterface/view/settings.py:69
+msgid "User was created!"
+msgstr ""
+
+#: webinterface/view/settings.py:82
+msgid "Settings saved!"
+msgstr "Einstellungen wurden gespeichert!"
+
+#: webinterface/view/settings.py:85
+msgid "Coffeemachine will be descaled!"
+msgstr "Kaffeemaschine wird entkalkt!"
