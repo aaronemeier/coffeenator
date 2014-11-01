@@ -1,10 +1,13 @@
 import os
+
 import django
 
+
 DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
-SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+SITE_ROOT = os.path.dirname(os.path.dirname(__file__))
+
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -25,10 +28,14 @@ LANGUAGES = (
              ('de', 'German'), 
              ('en', 'English')
              )
+
+TEMPLATE_DIRS = (
+    os.path.join(SITE_ROOT, 'template'),
+)
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
-USE_TZ = False
+USE_TZ = True
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
@@ -50,13 +57,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 ROOT_URLCONF = 'webinterface.urls'
 WSGI_APPLICATION = 'webinterface.wsgi.application'
-TEMPLATE_DIRS = (
-    os.path.join(SITE_ROOT, 'template')
-)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
