@@ -1,0 +1,6 @@
+.README.md.html
+.project
+.settings
+.pydevproject
+webinterface/settings.py
+*.pyc
