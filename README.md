@@ -12,7 +12,7 @@ You'll need connect the Raspberry with the coffee machine by using a relays-boar
 If you have any question, feel free to contact me.
 
 ## Dependencies
-* **Libraries**
+* **Libraries:**
   This is needed to run coffeenator successfully.
   * python2.7
   * python-dev
@@ -20,10 +20,10 @@ If you have any question, feel free to contact me.
   * python-RPI.GPIO
   * python-mysqldb
   * python-gettext
-* **Database**
+* **Database:**
 Can be any supported database by Django.
 I have used MySQL, which has been a pretty good choice so far.
-* **Webserver**
+* **Webserver:**
 Can be any Webserver with proxy-capabilities (e.g. Apache2 or Nginx).
 
 ## Installation
@@ -42,11 +42,6 @@ mysql -u root -p -e "DROP DATABASE IF EXISTS coffeenator;
 CREATE DATABASE coffeenator; 
 GRANT ALL PRIVILEGES ON coffeenator.* TO 'coffeenator'@'%' IDENTIFIED BY 'coffeenator';
 FLUSH PRIVILEGES;
-```
-
-### Nginx
-```bash
-apt-get install nginx ssl-cert
 ```
 
 ### Coffeenator
@@ -73,11 +68,19 @@ You can start the software manually by entering the this commands:
 service apache2 restart
 ```
 
-In order to automatically start coffeenator at boot, enter the following commands into /etc/rc.local before the "exit 0"-line.
+In order to automatically starting coffeenator at boot, enter the following commands into /etc/rc.local before the "exit 0"-line.
 ```bash
 /usr/bin/python /opt/coffeenator/manage.py runserver & 1>> /var/log/coffeenator.log 2>&1
-service apache2 restart
+service nginx reload
 exit 0
+```
+
+### Nginx
+To forward requests to coffeenator (port 8000), you could use Nginx.
+```bash
+apt-get install nginx ssl-cert
+cp /opt/coffeenator/doc/nginx/coffeenator.conf /etc/nginx/sites-available/coffeenator.conf
+ln -s /etc/nginx/sites-enabled/coffeenator.conf  /etc/nginx/sites-available/coffeenator.conf
 ```
 
 >**Note:** Right now, the software only runs with root-privileges, which can be unsafe.
