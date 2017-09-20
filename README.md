@@ -1,4 +1,6 @@
 # Coffeenator
+**Discontinued** 
+
 This is a simple interface for controlling coffee machines via web.  
 I created it as part of a school project with a Raspberry Pi system.  
 Could be useful for others, who want to control their coffee machines remotely.  
@@ -46,7 +48,7 @@ FLUSH PRIVILEGES;
 ### Coffeenator
 ```bash
 apt-get install git
-git clone https://github.com/blue-ananas/coffeenator.git /opt/coffeenator
+git clone https://github.com/cynja/coffeenator.git /opt/coffeenator
 chown -R root.root /opt/coffeenator
 ```
 
